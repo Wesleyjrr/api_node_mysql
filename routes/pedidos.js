@@ -9,19 +9,13 @@ router.get('/',(req,res,next) => {
         conn.query(
             'SELECT * FROM pedidos;',
             (error, resultado, fileds) => {
-                if(error) {
-                    return res.status(500).send({
-                    error: error,
-                    response: null
-                    });
-               }
-               res.status(200).send({
-                response:resultado
-            })
+                if(error) {return res.status(500).send({error: error})} 
+                
+                res.status(200).send({response:resultado});             
             }
-
-        )  
-    })
+            )
+           
+    });
 });
 // Insere um pedido
 router.post('/',(req, res, next)=> {
@@ -41,8 +35,7 @@ router.post('/',(req, res, next)=> {
                }
                res.status(201).send({
                 mensagem:"Pedido inserido com sucesso",
-                id_pedido: resultado.insertId
-            })
+                id_pedido: resultado.insertId })
             }          
         )
     });
