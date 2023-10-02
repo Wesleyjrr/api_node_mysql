@@ -5,8 +5,11 @@ const bodyParse = require ('body-parser');
 
 const rotaProdutos = require('./routes/produtos');
 const rotaPedidos = require('./routes/pedidos');
+const rotaUsuarios = require('./routes/usuarios');
 // Gerencia o acesso as rotas 
 app.use(morgan('dev'));
+// Tornando a pasta acessivel publicamente
+app.use('/uploads', express.static('uploads'));
 // Aceita dados simples
 app.use(bodyParse.urlencoded({extended: false}));
 // Apenas JSON de entrada no body
@@ -33,6 +36,7 @@ app.use((req, res, next) => {
 //rotas disponiveis para acesso
 app.use('/produtos',rotaProdutos);
 app.use('/pedidos',rotaPedidos);
+app.use('/usuarios',rotaUsuarios);
 
 app.use((req, res, next)=>{
     const erro = new Error('Não Encontrado');
