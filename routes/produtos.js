@@ -84,7 +84,7 @@ router.post('/',upload.single('produto_imagem'),(req, res, next)=> {
                const response = {
                 mensagem:'Porduto Inserido com Sucesso',
                 produtoCriado: {
-                    id_produto: result.id_produto,
+                    id_produto: result.insertId,
                     nome: req.body.nome,
                     preco: req.body.preco,
                     imagem_produto:req.file.path,

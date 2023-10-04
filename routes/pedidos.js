@@ -66,7 +66,7 @@ router.post('/',(req, res, next)=> {
                 const response = {
                     mensagem:"Pedido cadastrado com Sucesso",
                     pedidoCriado: {
-                        id_pedido: result.id_pedido,
+                        id_pedido: result.insertId,
                         id_produto: req.body.id_produto,
                         quantidade:req.body.quantidade,
                         request: {
